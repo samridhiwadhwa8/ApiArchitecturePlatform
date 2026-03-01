@@ -19,9 +19,9 @@ const Dashboard = () => {
           <h2>API Visualizer</h2>
         </div>
         <nav className="sidebar-nav">
-          <a href="#" className="nav-item active">Dashboard</a>
-          <a href="#" className="nav-item">My APIs</a>
-          <a href="#" className="nav-item">Settings</a>
+          <button className="nav-item active" onClick={() => {}}>Dashboard</button>
+          <button className="nav-item" onClick={() => {}}>My APIs</button>
+          <button className="nav-item" onClick={() => {}}>Settings</button>
         </nav>
         <div className="sidebar-footer">
           <button onClick={handleLogout} className="logout-button">

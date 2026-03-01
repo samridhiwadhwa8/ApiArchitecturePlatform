@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/profile');
+      const response = await axios.get('http://localhost:5000/api/auth/me');
       setUser(response.data.user);
     } catch (error) {
       console.error('Error fetching user profile:', error);

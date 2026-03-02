@@ -196,6 +196,34 @@
   margin: 0;
 }
 
+.project-tabs {
+  display: flex;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  color: #8b949e;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-button:hover {
+  color: #f0f6fc;
+  background-color: #21262d;
+}
+
+.tab-button.active {
+  color: #f0f6fc;
+  border-bottom-color: #58a6ff;
+}
+
 @media (max-width: 768px) {
   .dashboard {
     flex-direction: column;
@@ -212,6 +240,21 @@
   
   .dashboard-header {
     padding: 20px;
+  }
+  
+  .project-tabs {
+    flex-direction: column;
+    border-bottom: none;
+    border-right: 1px solid #30363d;
+  }
+  
+  .tab-button {
+    border-bottom: none;
+    border-right: 2px solid transparent;
+  }
+  
+  .tab-button.active {
+    border-right-color: #58a6ff;
   }
 }
 

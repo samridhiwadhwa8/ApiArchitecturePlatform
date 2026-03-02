@@ -1,0 +1,150 @@
+.endpoint-list {
+  padding: 20px 0;
+}
+
+.endpoint-list h3 {
+  color: #f0f6fc;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.endpoint-list-loading,
+.endpoint-list-error {
+  text-align: center;
+  padding: 40px;
+  color: #8b949e;
+  font-size: 16px;
+}
+
+.endpoint-list-error {
+  color: #f85149;
+}
+
+.no-endpoints {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #161b22;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+}
+
+.no-endpoints p {
+  color: #8b949e;
+  font-size: 16px;
+  margin: 0;
+}
+
+.endpoints-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px;
+}
+
+.endpoint-card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.endpoint-card:hover {
+  border-color: #58a6ff;
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.1);
+}
+
+.endpoint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.method-badge {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.endpoint-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.view-btn,
+.delete-btn {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn {
+  background-color: #238636;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #2ea043;
+}
+
+.delete-btn {
+  background-color: #da3633;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #f85149;
+}
+
+.endpoint-url {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #58a6ff;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.endpoint-description {
+  color: #8b949e;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.endpoint-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.created-date {
+  color: #8b949e;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .endpoints-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .endpoint-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .endpoint-actions {
+    align-self: flex-end;
+  }
+}

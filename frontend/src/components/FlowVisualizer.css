@@ -1,0 +1,349 @@
+.flow-visualizer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.flow-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  color: #8b949e;
+  font-size: 16px;
+}
+
+.flow-header {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.flow-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+}
+
+.flow-name-input {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 14px;
+  padding: 8px 12px;
+  min-width: 200px;
+  transition: border-color 0.2s ease;
+}
+
+.flow-name-input:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.add-node-btn,
+.save-flow-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-node-btn {
+  background-color: #0969da;
+  color: white;
+}
+
+.add-node-btn:hover {
+  background-color: #0860ca;
+}
+
+.save-flow-btn {
+  background-color: #238636;
+  color: white;
+}
+
+.save-flow-btn:hover:not(:disabled) {
+  background-color: #2ea043;
+}
+
+.save-flow-btn:disabled {
+  background-color: #1c7334;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.flow-error {
+  background-color: #da3633;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.flow-container {
+  flex: 1;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  min-height: 400px;
+  height: 600px;
+  width: 100%;
+}
+
+.endpoint-node {
+  background-color: #0d1117;
+  border: 2px solid #30363d;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 150px;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.endpoint-node:hover {
+  border-color: #58a6ff;
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+}
+
+.endpoint-node.selected {
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.2);
+}
+
+.node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.node-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.node-edit-btn,
+.node-delete-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.node-edit-btn:hover {
+  background-color: #0969da;
+  border-radius: 3px;
+}
+
+.node-delete-btn:hover {
+  background-color: #da3633;
+  border-radius: 3px;
+}
+
+.node-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.node-editor {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.node-editor h4 {
+  color: #f0f6fc;
+  margin: 0 0 16px 0;
+  font-size: 18px;
+}
+
+.node-editor-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  background-color: #0d1117;
+  color: #f0f6fc;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.node-editor-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  background-color: #238636;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.save-btn:hover {
+  background-color: #2ea043;
+}
+
+.cancel-btn {
+  background-color: #30363d;
+  color: #f0f6fc;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-btn:hover {
+  background-color: #21262d;
+}
+
+.node-method {
+  background-color: #238636;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.node-label {
+  color: #f0f6fc;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.node-description {
+  color: #8b949e;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* React Flow overrides */
+.react-flow__edge-path {
+  stroke: #58a6ff;
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #1f6feb;
+  stroke-width: 3;
+}
+
+.react-flow__handle {
+  background-color: #58a6ff;
+  border: 2px solid #0d1117;
+  width: 8px;
+  height: 8px;
+}
+
+.react-flow__handle:hover {
+  background-color: #79c0ff;
+}
+
+.react-flow__controls {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.react-flow__controls button {
+  background-color: #0d1117;
+  border: none;
+  color: #f0f6fc;
+  transition: background-color 0.2s ease;
+}
+
+.react-flow__controls button:hover {
+  background-color: #21262d;
+}
+
+.react-flow__minimap {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.flow-instructions {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.flow-instructions h4 {
+  color: #f0f6fc;
+  font-size: 16px;
+  margin: 0 0 12px 0;
+}
+
+.flow-instructions ul {
+  color: #8b949e;
+  font-size: 14px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.flow-instructions li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .flow-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .flow-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .flow-name-input {
+    min-width: auto;
+    width: 100%;
+  }
+}

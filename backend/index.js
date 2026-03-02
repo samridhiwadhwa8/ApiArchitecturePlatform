@@ -23,9 +23,13 @@ app.get('/', (req, res) => {
 // API routes
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
+const endpointRoutes = require('./routes/endpoints');
+const flowRoutes = require('./routes/flows');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/endpoints', endpointRoutes);
+app.use('/api/flows', flowRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

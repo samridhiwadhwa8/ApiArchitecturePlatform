@@ -3,6 +3,9 @@ import { useAuth } from '../components/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import ProjectList from '../components/ProjectList';
 import CreateProject from '../components/CreateProject';
+import EndpointList from '../components/EndpointList';
+import CreateEndpoint from '../components/CreateEndpoint';
+import FlowVisualizer from '../components/FlowVisualizer';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -10,6 +13,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [activeView, setActiveView] = useState('dashboard');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [refreshEndpoints, setRefreshEndpoints] = useState(false);
+  const [projectTab, setProjectTab] = useState('endpoints');
 
   const handleLogout = () => {
     logout();
@@ -19,11 +24,21 @@ const Dashboard = () => {
   const handleProjectSelect = (project) => {
     setSelectedProject(project);
     setActiveView('project');
+    setRefreshEndpoints(false);
+    setProjectTab('endpoints');
   };
 
   const handleProjectCreated = (project) => {
-    // Refresh the project list by switching back to dashboard
     setActiveView('dashboard');
+  };
+
+  const handleEndpointCreated = () => {
+    setRefreshEndpoints(true);
+  };
+
+  const handleEndpointSelect = (endpoint) => {
+    // Future: Show endpoint details or flow visualization
+    console.log('Selected endpoint:', endpoint);
   };
 
   const renderMainContent = () => {
@@ -42,11 +57,40 @@ const Dashboard = () => {
               <p className="project-description">{selectedProject.description}</p>
             )}
           </div>
+          
+          <div className="project-tabs">
+            <button 
+              className={`tab-button ${projectTab === 'endpoints' ? 'active' : ''}`}
+              onClick={() => setProjectTab('endpoints')}
+            >
+              Endpoints
+            </button>
+            <button 
+              className={`tab-button ${projectTab === 'flow' ? 'active' : ''}`}
+              onClick={() => setProjectTab('flow')}
+            >
+              Flow Visualizer
+            </button>
+          </div>
+
           <div className="project-content">
-            <div className="empty-state">
-              <h3>API Management Coming Soon!</h3>
-              <p>This is where you'll be able to add APIs, endpoints, and flows for this project.</p>
-            </div>
+            {projectTab === 'endpoints' && (
+              <>
+                <CreateEndpoint 
+                  projectId={selectedProject._id} 
+                  onEndpointCreated={handleEndpointCreated}
+                />
+                <EndpointList 
+                  projectId={selectedProject._id}
+                  onEndpointSelect={handleEndpointSelect}
+                  refresh={refreshEndpoints}
+                />
+              </>
+            )}
+            
+            {projectTab === 'flow' && (
+              <FlowVisualizer projectId={selectedProject._id} />
+            )}
           </div>
         </div>
       );
